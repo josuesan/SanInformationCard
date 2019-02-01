@@ -1,0 +1,173 @@
+/* GLOBAL VARIABLES */
+:root {
+    --font: "Roboto", sans-serif;
+    --fontSmall: 0.625rem;   /* 10px */
+    --fontMedium: 0.875rem;  /* 14px */
+    --fontNormal: 1rem;      /* 16px */
+    --fontLarge:  1.375rem;  /* 22px */
+    --fontLight: 100;
+    --fontRegular: 400;
+    --speed: 0.65s;
+}
+
+@keyframes zoom {
+    from {
+        object-position: 0 50%;
+    }
+    to {
+        object-position: 100% 50%;
+    }
+}
+
+.san-card:hover {
+    box-shadow: 0 40px 130px rgba(0, 0, 0, 0.6);
+    transform: scale(1.1, 1.1);
+}
+.san-card {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    max-width: 250px;
+    height: 400px;
+    font-size: var(--fontNormal);
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 16px 60px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: all var(--speed) ease;
+}
+
+.san-card-image-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.5));
+}
+  
+.san-card-image-bg img {
+    transform: scale(1.3, 1.3);
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+    transition: all var(--speed) ease;
+    animation-name: zoom;
+    animation-duration: 30s;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+  
+.san-card:hover .san-card-image-bg img {
+    transform: scale(1, 1);
+    opacity: 0.5;
+}
+.san-card-header{
+    padding: 1rem;
+}
+.san-card-photo{
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: .5rem;
+    border-radius: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: grayscale(50%) contrast(75%) brightness(1.3);
+    transition: all var(--speed) ease;
+    mix-blend-mode: normal;
+    backface-visibility: hidden;
+}
+.san-card:hover .san-card-photo{
+    -webkit-transform: scale(1.2, 1.2)  translateZ(0);
+    transform: scale(1.2, 1.2)  translateZ(0);
+}
+.san-card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1.5rem;
+}
+.san-card-title {
+    color: white;
+    font-size: var(--fontLarge);
+    font-weight: var(--fontLight);
+    letter-spacing: 0.1rem;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    background: -webkit-linear-gradient(white, #a1a1a1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all var(--speed) ease;
+}
+.san-card:hover .san-card-title{
+    background: -webkit-linear-gradient(white, #c1c1c1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.san-card-title p{
+    margin-bottom: 0;
+}
+.san-card-subtitle {
+    font-size: var(--fontSmall);
+    font-weight: var(--fontLight);
+    text-align: center;
+    color: rgba(255, 255, 255,0.7);
+    transition: all var(--speed) ease;
+}
+
+.san-card:hover .san-card-subtitle  {
+    color: rgba(255, 255, 255,1)
+}
+
+.san-card-description{
+    position: relative;
+    width: 100%;
+    transform: translateY(30%);
+    display: block;
+    text-align: left;
+    font-size: var(--fontMedium);
+    font-weight: var(--fontLight);
+    color: rgba(255, 255, 255, 0.65);
+    opacity: 0;
+    transition: all var(--speed) ease;
+}
+.san-card:hover .san-card-description {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.san-card-footer{
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    transform: translateY(60%);
+    display: block;
+    padding: .8rem 1.5rem;
+    opacity: 0;
+    transition: all var(--speed) ease;
+}
+.san-card:hover .san-card-footer {
+    transform: translateY(0);
+    opacity: 1;
+}
+.san-card-date {
+    font-size: var(--fontSmall);
+    font-weight: var(--fontLight);
+    text-transform: uppercase;
+    text-shadow: 0 0.5px 1px rgba(0, 0, 0, 0.45);
+    color: rgba(250, 250, 250, 0.4);
+  }
